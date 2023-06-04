@@ -1,4 +1,12 @@
 /*--------head------------*/
+.login-head{
+    padding: 5px;
+    color: #1eb1a5;
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .head {
   padding: 20px 0;
   color: #fff;

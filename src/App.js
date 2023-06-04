@@ -10,6 +10,8 @@ import Contact from "./components/contact/Contact"
 import Footer from "./components/common/footer/Footer"
 import Home from "./components/home/Home"
 import CoursesSingle from "./components/course_detail/course_single";
+import RegistrationPage from "./components/login-register/register";
+import LoginPage from "./components/login-register/login";
 function App() {
   return (
     <>
@@ -25,6 +27,8 @@ function App() {
           <Route exact path='/pricing' element={<Pricing/>} />
           <Route exact path='/journal' element={<Blog/>} />
           <Route exact path='/contact' element={<Contact/>} />
+          <Route path={'/signup'} element={<RegistrationPage/>}/>
+          <Route path={'/login'} element={<LoginPage/>}/>
 
 
 
