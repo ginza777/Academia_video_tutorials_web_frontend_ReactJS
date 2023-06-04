@@ -9,7 +9,7 @@ import Blog from "./components/blog/Blog"
 import Contact from "./components/contact/Contact"
 import Footer from "./components/common/footer/Footer"
 import Home from "./components/home/Home"
-import CoursesCardDetail from "./components/course_detail/course_detail";
+import CoursesSingle from "./components/course_detail/course_single";
 function App() {
   return (
     <>
@@ -20,7 +20,7 @@ function App() {
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/about' element={<About/>} />
           <Route exact path='/courses' element={<CourseHome/>} />
-          <Route exact path='/courses/:id' element={<CoursesCardDetail/>} />
+          <Route exact path='/courses/:id' element={<CoursesSingle/>} />
           <Route exact path='/team' element={<Team/>} />
           <Route exact path='/pricing' element={<Pricing/>} />
           <Route exact path='/journal' element={<Blog/>} />

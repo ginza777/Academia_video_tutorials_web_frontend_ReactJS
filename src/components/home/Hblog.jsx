@@ -13,7 +13,7 @@ const Hblog = () => {
           <Heading subtitle='OUR BLOG' title='Recent From Blog' />
           <div className='grid2'>
             {blog.slice(0, 3).map((val) => (
-              <div className='items shadow'>
+              <div className='items shadow' key={val.id}>
                 <div className='img'>
                   <img src={val.cover} alt='' />
                 </div>

@@ -3,6 +3,8 @@ import "./courses.css"
 import {Link} from "react-router-dom"
 import {useEffect, useState} from "react"
 
+
+
 function CoursesCard() {
     // const
     const baseURL = "http://127.0.0.1:8000/api/courses/"
@@ -20,6 +22,10 @@ function CoursesCard() {
     }, [])
 
     console.log(courses)
+    const handleEnrollClick  = ({ id, title }) => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
     return (
         <>
             <section className='coursesCards'>
@@ -46,8 +52,8 @@ function CoursesCard() {
                             <h3 className={'price'}>
                                 {val.price} All Course / {val.price_per} per month
                             </h3>
-                            <Link key={val.id} id={val.id} to={`/courses/${val.id}`}>
-                                <button className='course-btn'>ENROLL NOW !</button>
+                            <Link key={val.id} id={val.id} to={`/courses/${val.id}`}  smooth={true}>
+                                <button onClick={handleEnrollClick} className='course-btn'>ENROLL NOW !</button>
                             </Link>
 
 

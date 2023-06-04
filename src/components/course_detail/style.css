@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+
+}
+
+.course-detail-page {
+    z-index: 2;
+}
+
+.course_info {
+    width: 100%;
+    height: auto;
+}
+
+.course_info-container {
+    display: flex;
+    justify-content: center;
+    width: 99%;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+/*row top*/
+.course-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/*left right*/
+.row-left {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.row-right {
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+/*left*/
+.course_info_img > img {
+    border-radius: 5px;
+    width: 90%;
+    min-width: 50%;
+    margin: 0 auto;
+}
+
+.course_info_img > h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #1eb1a5;
+    margin: 10px 0;
+}
+
+/*right*/
+
+.course_info_text {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.course-description {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    padding: 10px 0;
+    color: #323233;
+    font-weight: 550;
+
+}
+
+/*table*/
+#table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#table tr:hover {
+    background-color: #ddd;
+}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #1eb1a5;
+    color: white;
+}
+
+/*videos */
+.coursesCard {
+    width: 60%;
+    height: auto;
+    padding: 5px 20px;
+    left: 15px;
+    top: 0;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.videos-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+    align-content: center;
+    gap: 10px;
+
+}
+
+.video-item {
+    min-width: 50%;
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: 1px solid #bbb9b9;
+    border-radius: 15px;
+    align-items: center;
+    align-content: center;
+    background-color: #dad7d7;
+}
+
+.video-item > h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1eb1a5;
+    margin: 10px 15px;
+    display: inline;
+    padding: 5px;
+}
+
+.video-item > button {
+    background-color: #1eb1a5;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 15px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+
+/*popup */
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: black;
+    /* Qolgan CSS usullarini qo'shing */
+}
+
+
+.popup-content {
+    position: relative;
+}
+
+.popup-content > video {
+    /* Qo'lga kiritilgan o'lchamlar va responsive usullar */
+    width: 100%;
+    height: auto;
+}
+
+.popup-content .close-btn {
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    background-color: #944747;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+    /* Qolgan CSS usullarini qo'shing */
+}
+
+.popup-content .close-btn:hover {
+    cursor: pointer;
+    transform: scale(1.1); /* O'lchamni o'zgartirish */
+    background-color: red; /* Matnni qizil rangga o'zgartirish */
+}

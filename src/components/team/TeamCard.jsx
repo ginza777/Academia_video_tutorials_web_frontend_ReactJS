@@ -5,7 +5,7 @@ const TeamCard = () => {
   return (
     <>
       {team.map((val) => (
-        <div className='items shadow'>
+        <div className='items shadow' key={val.id}>
           <div className='img'>
             <img src={val.cover} alt='' />
             <div className='overlay'>
