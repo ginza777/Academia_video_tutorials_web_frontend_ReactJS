@@ -16,8 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-
+        <Header/>
         <Routes>
           <Route exact path='/' element={<Home/>} />
           <Route exact path='/about' element={<About/>} />
@@ -27,7 +26,7 @@ function App() {
           <Route exact path='/pricing' element={<Pricing/>} />
           <Route exact path='/journal' element={<Blog/>} />
           <Route exact path='/contact' element={<Contact/>} />
-          <Route path={'/signup'} element={<RegistrationPage/>}/>
+          <Route path={'/register'} element={<RegistrationPage/>}/>
           <Route path={'/login'} element={<LoginPage/>}/>
 
 

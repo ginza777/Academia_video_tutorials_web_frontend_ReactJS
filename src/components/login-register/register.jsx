@@ -1,7 +1,8 @@
 import './login-style.css'
 import React, {useState} from 'react';
-import {Link, useNavigate} from "react-router-dom";
-const RegistrationUrl = 'http://localhost:8000/register/'
+import {useNavigate} from "react-router-dom";
+
+const RegistrationUrl = 'http://localhost:8000/api/register/'
 
 
 function RegistrationPage() {
@@ -43,16 +44,13 @@ function RegistrationPage() {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify({
-                username: username,
-                email: email,
-                phone: phone,
-                password: password
+                username: username, email: email, phone: phone, password: password
             })
         })
             .then(response => {
                 if (response.ok) {
                     navigate('/login');
-                    alert("login succesfull!!!")
+                    alert("registration  complete!!!")
                     return response.json();
                 } else {
                     throw new Error('Registration failed.');
@@ -65,66 +63,47 @@ function RegistrationPage() {
     };
 
     return (<div className={'login'}>
-            {/*eslint-disable*/}
             <div className="registration-page">
-                <div className="Nav">
-                    <div className="navbar">
-                        <Link to="/">
-                            <div className="logo">
-                                <img src='' alt="logo"/>
-                                <h1>Ginza</h1>
-                            </div>
-                        </Link>
-                        <div className="nav-items">
-                            <ul>
-                                <li><Link className={'login_button'} to="/login">Login</Link></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
                 <div className={'login-form'}>
-                    <h1 style={{color: 'black'}}>Registration</h1>
-                    <form onSubmit={handleSubmit}>
+                    <h1> Register</h1>
+                    <form className="registration-form" onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <label htmlFor="fullName">username</label>
+                            <label htmlFor="fullName">Username</label>
                             <input
-                                type="username"
+                                type="text"
                                 id="username"
                                 value={username}
-                                placeholder={'Username'}
+                                placeholder="Username"
                                 onChange={(event) => setUsername(event.target.value)}
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email">email</label>
+                            <label htmlFor="email">Email</label>
                             <input
                                 type="email"
-                                id="gmail"
+                                id="email"
                                 value={email}
-                                placeholder={'ex: ginza@gmail.com'}
+                                placeholder="example@gmail.com"
                                 onChange={(event) => setEmail(event.target.value)}
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="phone">phone</label>
+                            <label htmlFor="phone">Phone</label>
                             <input
-                                type="phone"
+                                type="text"
                                 id="phone"
                                 value={phone}
-                                placeholder={'ex: +998900046465'}
+                                placeholder="ex: +998900046465"
                                 onChange={(event) => setPhone(event.target.value)}
                             />
                         </div>
-
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
                             <input
                                 type="password"
                                 id="password"
                                 value={password}
-                                placeholder={'Password'}
+                                placeholder="Password"
                                 onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
@@ -134,11 +113,11 @@ function RegistrationPage() {
                                 type="password"
                                 id="retypePassword"
                                 value={retypePassword}
-                                placeholder={'retypePassword'}
+                                placeholder="Retype Password"
                                 onChange={(event) => setRetypePassword(event.target.value)}
                             />
                         </div>
-                        <button className={'login-button'} type="submit">Register</button>
+                        <button className="login-button" type="submit">Register</button>
                     </form>
                 </div>
             </div>

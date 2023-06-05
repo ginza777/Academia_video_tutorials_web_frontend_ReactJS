@@ -1,10 +1,9 @@
-import {Link} from "react-router-dom";
+
 import React, {useState} from "react";
-import jwt_decode from "jwt-decode";
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import './login-style.css'
 
-const LoginUrl = 'http://127.0.0.1:8000/token/'
+const LoginUrl = 'http://127.0.0.1:8000/api/token/'
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -15,7 +14,6 @@ function LoginPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password);
         fetch(LoginUrl, {
             method: 'POST', headers: {
                 'Content-Type': 'application/json'
@@ -35,12 +33,12 @@ function LoginPage() {
             })
             .then(data => {
                 // Store the token in local storage or a cookie
-                console.log(data.access);
                 localStorage.setItem('access_token', data.access);
                 setToken(data.access);
-                console.log(jwt_decode(data.access));
-                navigate('/');
+                navigate(`/`)
                 alert("login succesfull!!!")
+
+
             })
 
             .catch(error => {
@@ -78,25 +76,8 @@ function LoginPage() {
 
     return (<div className={'login'}>      {/*eslint-disable*/}
             <div className="login-page">
-                <div className="Nav">
-                    <div className="navbar">
-                        <Link to="/">
-                            <div className="logo">
-                                <img src='' alt="logo"/>
-                                <h1>Ginza</h1>
-                            </div>
-                        </Link>
-
-                        <div className="nav-items">
-                            <ul>
-                                <li><Link className={'login_button'} to="/signup">Register</Link></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                <div className={'login-form'}>
-                    <h1 style={{color: 'black'}}>Login</h1>
+                <div className={'registration-form'}>
+                    <h1> Login</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="email">Email :</label>
