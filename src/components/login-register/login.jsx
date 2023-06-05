@@ -1,26 +1,26 @@
-
 import React, {useState} from "react";
-import {Link, useNavigate} from 'react-router-dom';
-import './login-style.css'
+import {Link, redirect, useNavigate} from 'react-router-dom';
+import './login-style.css';
+import jwtDecode from "jwt-decode";
 
-const LoginUrl = 'http://127.0.0.1:8000/api/token/'
+
+const LoginUrl = 'http://127.0.0.1:8000/api/token/';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const [token, setToken] = useState(null);
     const [error, setError] = useState(null);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         fetch(LoginUrl, {
-            method: 'POST', headers: {
+            method: 'POST',
+            headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify({
-
-                email: email, password: password
-
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
             })
         })
             .then(response => {
@@ -28,28 +28,29 @@ function LoginPage() {
                     return response.json();
                 } else {
                     throw new Error('Authentication failed.');
-
                 }
             })
             .then(data => {
-                // Store the token in local storage or a cookie
+                const user_email = jwtDecode(data.access).email;
+                const user_name = jwtDecode(data.access).username;
+                localStorage.setItem('user_email', user_email);
+                localStorage.setItem('user_name', user_name);
                 localStorage.setItem('access_token', data.access);
-                setToken(data.access);
-                navigate(`/`)
-                alert("login succesfull!!!")
+                navigate('/', {replace: true});
+                window.location.reload();
 
 
             })
-
             .catch(error => {
                 console.log('catch error', error.message);
                 alert('Authentication failed!');
-                // Try to refresh the token if an error occurs
                 if (error.message === 'Authentication failed.') {
                     fetch(`${LoginUrl}refresh/`, {
-                        method: 'POST', headers: {
+                        method: 'POST',
+                        headers: {
                             'Content-Type': 'application/json'
-                        }, body: JSON.stringify({
+                        },
+                        body: JSON.stringify({
                             refresh: localStorage.getItem('refresh_token')
                         })
                     })
@@ -61,42 +62,47 @@ function LoginPage() {
                             }
                         })
                         .then(data => {
-                            // Store the new access token in local storage
                             localStorage.setItem('access_token', data.access);
-                            setToken(data.access);
                         })
                         .catch(error => {
                             setError(error.message);
                         });
                 }
             });
+    };
 
-
-    }
-
-    return (<div className={'login'}>      {/*eslint-disable*/}
+    return (
+        <div className="login">
             <div className="login-page">
-                <div className={'registration-form'}>
-                    <h1> Login</h1>
+                <div className="registration-form">
+                    <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label htmlFor="email">Email :</label>
-                            <input type="email" id="email"
-                                   placeholder={'Enter your username or email or phone'}
-                                   value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="Enter your username or email or phone"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password:</label>
-                            <input type="password" placeholder={'password'} id="password" value={password}
-                                   onChange={(e) => setPassword(e.target.value)}/>
+                            <input
+                                type="password"
+                                placeholder="password"
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
-                        <button className={'login-button'} type="submit">Login</button>
+                        <button className="login-button" type="submit">Login</button>
+                        <Link to="/register">Register</Link>
                     </form>
                 </div>
             </div>
-
         </div>
-
     );
 }
 

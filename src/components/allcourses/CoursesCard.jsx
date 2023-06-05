@@ -21,7 +21,7 @@ function CoursesCard() {
             })
     }, [])
 
-    console.log(courses)
+
     const handleEnrollClick  = ({ id, title }) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       };

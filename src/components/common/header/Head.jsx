@@ -1,7 +1,7 @@
 import React from "react"
 
-function Head (props) {
-
+function Head() {
+    const email = localStorage.getItem('user_email');
     return <>
         <section className='head'>
             <div className='container flexSB'>
@@ -15,6 +15,8 @@ function Head (props) {
                     <a href="#"><i className='fab fa-instagram icon'></i></a>
                     <a href="#"><i className='fab fa-twitter icon'></i></a>
                     <a href="#"><i className='fab fa-youtube icon'></i></a>
+                    <a href="" style={{marginLeft:'20px', color: "black", fontWeight: 900, textDecoration: 'none'}}>{email}</a>
+
 
                 </div>
             </div>

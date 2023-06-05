@@ -20,7 +20,7 @@ const handleSubmit = (e) => {
         return;
     }
 
-    console.log(formData);
+
     fetch("http://127.0.0.1:8000/api/contact_us/", {
         method: "POST",
         headers: {
@@ -31,7 +31,7 @@ const handleSubmit = (e) => {
         .then(response => response.json())
         .then(data => {
             // Response from the server after successful submission
-            console.log(data);
+
             alert("Xabar muvaffaqiyatli yuborildi");
             setFormData({
                 name: "",

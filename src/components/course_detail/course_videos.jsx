@@ -14,7 +14,7 @@ const CourseVideos = () => {
                 const response = await fetch(`${baseURL}${id}/videos`);
                 const data = await response.json();
                 setVideos(data.results);
-                console.log(data.results)
+
             } catch (error) {
             }
         };

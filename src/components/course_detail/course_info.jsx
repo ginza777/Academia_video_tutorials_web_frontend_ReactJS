@@ -13,7 +13,6 @@ const CoursesInfo = () => {
                 const response = await fetch(`${baseURL}${id}`);
                 const data = await response.json();
                 setCourses(data);
-                console.log(data)
             } catch (error) {
             }
         };
