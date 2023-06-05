@@ -18,8 +18,6 @@ import UserContext from "./context";
 function App() {
     const user_email = localStorage.getItem('user_email');
     const user_name = localStorage.getItem('user_name');
-    console.log(user_email);
-    console.log(user_name);
     const userData = {
         username: user_name,
         email: user_email,

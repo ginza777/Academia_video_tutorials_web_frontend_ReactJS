@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react"
 import {Link, useNavigate} from "react-router-dom"
 import Head from "./Head"
 import "./header.css"
-
 const Header = () => {
     const navigate = useNavigate();
     const [click, setClick] = useState(false)
@@ -32,7 +31,7 @@ const Header = () => {
                         <Link to='/'>Home</Link>
                     </li>
                     <li>
-                        <Link to='/courses'>All Courses</Link>
+                        <Link to='/courses'>Courses</Link>
                     </li>
                     <li>
                         <Link to='/about'>About</Link>

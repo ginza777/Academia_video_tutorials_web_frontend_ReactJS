@@ -41,22 +41,28 @@ function RegistrationPage() {
         }
 
         fetch(RegistrationUrl, {
-            method: 'POST', headers: {
+            method: 'POST',
+            headers: {
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify({
-                username: username, email: email, phone: phone, password: password
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                phone: phone,
+                password: password
             })
         })
             .then(response => {
                 if (response.ok) {
                     navigate('/login');
-                    alert("registration  complete!!!")
                     return response.json();
                 } else {
-                    throw new Error('Registration failed.');
+
+                    alert("email yoki username mavjud !!!")
 
                 }
             })
+        setEmail('');
         setUsername('');
         setPassword('');
         setRetypePassword('');
