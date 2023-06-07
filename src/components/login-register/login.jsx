@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import {Link, redirect, useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import './login-style.css';
 import jwtDecode from "jwt-decode";
+import {TOKEN} from '../../urls.js'
 
-
-const LoginUrl = 'http://127.0.0.1:8000/api/token/';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -13,7 +12,7 @@ function LoginPage() {
     const [error, setError] = useState(null);
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch(LoginUrl, {
+        fetch(TOKEN, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +44,7 @@ function LoginPage() {
                 console.log('catch error', error.message);
                 alert('Authentication failed!');
                 if (error.message === 'Authentication failed.') {
-                    fetch(`${LoginUrl}refresh/`, {
+                    fetch(`${TOKEN}refresh/`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Back from "../common/back/Back";
 import "./contact.css";
+import {CONTACT} from "../../urls.js";
 
 const Contact = () => {
     const map  = 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3245.609720127103!2d69.24007345868544!3d41.29949541180022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suz!4v1652535615693!5m2!1sen!2suz';
@@ -21,7 +22,7 @@ const handleSubmit = (e) => {
     }
 
 
-    fetch("http://127.0.0.1:8000/api/contact_us/", {
+    fetch(CONTACT, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

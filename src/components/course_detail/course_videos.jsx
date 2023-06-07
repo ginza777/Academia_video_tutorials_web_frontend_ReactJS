@@ -1,17 +1,16 @@
 import React, {useEffect, useState} from "react"
 import "./style.css"
 import {useParams} from "react-router-dom";
-
+import {Course} from "../../urls.js";
 const CourseVideos = () => {
     // const
     const [videos, setVideos] = useState([])
     const {id} = useParams();
-    const baseURL = "http://127.0.0.1:8000/api/courses/"
     // videos list fetch function
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await fetch(`${baseURL}${id}/videos`);
+                const response = await fetch(`${Course}/${id}/videos/`);
                 const data = await response.json();
                 setVideos(data.results);
 

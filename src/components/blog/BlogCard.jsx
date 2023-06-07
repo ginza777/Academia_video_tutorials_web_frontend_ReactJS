@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react"
-
+import {BlogPosts} from "../../urls.js";
 async function fetchData() {
-    const url = 'http://127.0.0.1:8000/api/blogposts/'; // API url manzili
+
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch({BlogPosts}, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json'
             }, // Gerekli bo'lsa, kirish ma'lumotlarini (headers, body, etc.) qo'shing

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-
+import {TEACHERS} from '../../urls.js';
 async function fetchData() {
-    const url = 'http://127.0.0.1:8000/api/teachers/'; // API url manzili
+    const url = TEACHERS; // API url manzili
 
     try {
         const response = await fetch(url, {

@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react"
 import "../blog/blog.css"
-import { blog } from "../../dummydata"
 import Heading from "../common/heading/Heading"
-
+import {BlogPosts} from "../../urls.js";
 // copy code of blog => blogCard
+
 async function fetchData() {
-    const url = 'http://127.0.0.1:8000/api/blogposts/'; // API url manzili
 
     try {
-        const response = await fetch(url, {
+        const response = await fetch(BlogPosts, {
             method: 'GET', headers: {
                 'Content-Type': 'application/json'
             }, // Gerekli bo'lsa, kirish ma'lumotlarini (headers, body, etc.) qo'shing

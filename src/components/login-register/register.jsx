@@ -1,11 +1,11 @@
 import './login-style.css'
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
-
-const RegistrationUrl = 'http://localhost:8000/api/register/'
+import {REGISTER} from "../../urls";
 
 
 function RegistrationPage() {
+    console.log('RegistrationPage',REGISTER)
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState(''); //
@@ -40,20 +40,16 @@ function RegistrationPage() {
             return;
         }
 
-        fetch(RegistrationUrl, {
-            method: 'POST',
-            headers: {
+        fetch(REGISTER, {
+            method: 'POST', headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                phone: phone,
-                password: password
+            }, body: JSON.stringify({
+                username: username, email: email, phone: phone, password: password
             })
         })
             .then(response => {
                 if (response.ok) {
+                    console.log(response);
                     navigate('/login');
                     return response.json();
                 } else {

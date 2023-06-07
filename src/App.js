@@ -16,6 +16,7 @@ import UserContext from "./context";
 
 
 function App() {
+
     const user_email = localStorage.getItem('user_email');
     const user_name = localStorage.getItem('user_name');
     const userData = {
@@ -27,18 +28,18 @@ function App() {
             <UserContext.Provider value={userData}>
                 <BrowserRouter>
                     <Header/>
-                        <Routes>
-                            <Route exact path='/' element={<Home/>}/>
-                            <Route exact path='/about' element={<About/>}/>
-                            <Route exact path='/courses' element={<CourseHome/>}/>
-                            <Route exact path='/courses/:id' element={<CoursesSingle/>}/>
-                            <Route exact path='/team' element={<Team/>}/>
-                            <Route exact path='/pricing' element={<Pricing/>}/>
-                            <Route exact path='/journal' element={<Blog/>}/>
-                            <Route exact path='/contact' element={<Contact/>}/>
-                            <Route path={'/register'} element={<RegistrationPage/>}/>
-                            <Route path={'/login'} element={<LoginPage/>}/>
-                        </Routes>
+                    <Routes>
+                        <Route exact path='/' element={<Home/>}/>
+                        <Route exact path='/about' element={<About/>}/>
+                        <Route exact path='/courses' element={<CourseHome/>}/>
+                        <Route exact path='/courses/:id' element={<CoursesSingle/>}/>
+                        <Route exact path='/team' element={<Team/>}/>
+                        <Route exact path='/pricing' element={<Pricing/>}/>
+                        <Route exact path='/journal' element={<Blog/>}/>
+                        <Route exact path='/contact' element={<Contact/>}/>
+                        <Route path={'/register'} element={<RegistrationPage/>}/>
+                        <Route path={'/login'} element={<LoginPage/>}/>
+                    </Routes>
                     <Footer/>
                 </BrowserRouter>
             </UserContext.Provider>

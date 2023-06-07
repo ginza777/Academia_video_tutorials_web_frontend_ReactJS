@@ -2,16 +2,15 @@ import React from "react"
 import "./courses.css"
 import {Link} from "react-router-dom"
 import {useEffect, useState} from "react"
-
+import {Course} from '../../urls.js'
 
 
 function CoursesCard() {
     // const
-    const baseURL = "http://127.0.0.1:8000/api/courses/"
     const [courses, setCourses] = useState([])
 
     useEffect(() => {
-        fetch(baseURL)
+        fetch(`${Course}/`)
             .then(res => res.json())
             .then((results) => {
                 setCourses(results.results)
@@ -52,7 +51,7 @@ function CoursesCard() {
                             <h3 className={'price'}>
                                 {val.price} All Course / {val.price_per} per month
                             </h3>
-                            <Link key={val.id} id={val.id} to={`/courses/${val.id}`}  smooth={true}>
+                            <Link key={val.id} id={val.id} to={`/courses/${val.id}/`}  smooth={true}>
                                 <button onClick={handleEnrollClick} className='course-btn'>ENROLL NOW !</button>
                             </Link>
 
